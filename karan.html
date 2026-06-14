@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكلة زمان - المذاق الأصيل بالعروي</title>
+    <!-- مكتبة الأيقونات الفخمة -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* إعدادات عصرية وعامة */
+        :root {
+            --primary-color: #f39c12;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-light: #faf7f2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* الهيدر المحترف */
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--primary-color);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 8px;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            font-weight: 300;
+        }
+
+        /* واجهة الإشهار الرئيسية (Hero Section) */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80') no-repeat center center/cover;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 4px 8px rgba(0,0,0,0.6);
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            margin-bottom: 35px;
+            max-width: 700px;
+            opacity: 0.95;
+        }
+
+        .btn-call {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(243, 156, 18, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-call:hover {
+            background-color: white;
+            color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        /* فلاتر المينيو الذكية */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px auto;
+            flex-wrap: wrap;
+            max-width: 800px;
+        }
+
+        .filter-btn {
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: var(--secondary-color);
+            padding: 8px 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 10px rgba(243, 156, 18, 0.3);
+        }
+
+        /* قسم المينيو والإشهار */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto 60px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.4rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+        }
+
+        .menu-card {
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border: 1px solid #eaeded;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+
+        .menu-img {
+            height: 230px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card:hover .menu-img {
+            transform: scale(1.05);
+        }
+
+        .menu-img-title {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            width: 100%;
+            padding: 20px;
+            color: white;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .menu-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .menu-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--secondary-color);
+        }
+
+        .menu-info p {
+            color: #7f8c8d;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            height: 70px;
+        }
+
+        .price {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            background-color: #fdf2f2;
+            padding: 6px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px dashed var(--accent-color);
+        }
+
+        /* قسم معلومات الاتصال والموقع المطور */
+        .contact-info {
+            background-color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .address-text {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .location-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            max-width: 900px;
+            margin: 35px auto;
+        }
+
+        .location-card {
+            background-color: #fffbf5;
+            border: 1px solid #f9ebea;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 25px;
+            flex: 1;
+            min-width: 290px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .location-card i {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .location-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .location-card p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .phone-num {
+            font-size: 2.4rem;
+            color: var(--accent-color);
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin: 25px 0;
+            text-decoration: none;
+        }
+
+        .phone-num:hover {
+            color: var(--primary-color);
+            transform: scale(1.03);
+        }
+
+        .welcome-msg {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-top: 15px;
+        }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: #bdc3c7;
+            text-align: center;
+            padding: 25px;
+            font-size: 1rem;
+            border-top: 1px solid #34495e;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <h1>سناك البنّة الأصيلة</h1>
+        <p>الجودة والمذاق التقليدي الرفيع بمدينة العروي</p>
+    </header>
+
+    <!-- واجهة الإشهار الرئيسية -->
+    <section class="hero">
+        <h2>اكتشف طعم الأصالة</h2>
+        <p>نقدم لكم أجود المأكولات الشعبية المحضرة بعناية فائقة ونظافة تامة لتنال رضاكم.</p>
+        <a href="tel:0661985075" class="btn-call">
+            <i class="fa-solid fa-phone-flip"></i> اتصل واطلب الآن
+        </a>
+    </section>
+
+    <!-- قائمة المأكولات -->
+    <main class="container">
+        <h2 class="section-title">قائمة المأكولات</h2>
+        <p class="section-subtitle">اختر وجبتك المفضلة من المينيو الخاص بنا</p>
+        
+        <!-- أزرار الفلترة الذكية -->
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterMenu('all')">الكل</button>
+            <button class="filter-btn" onclick="filterMenu('karan')">كران وبودان</button>
+            <button class="filter-btn" onclick="filterMenu('sandwich')">السندويشات</button>
+            <button class="filter-btn" onclick="filterMenu('drinks')">المشروبات</button>
+        </div>
+        
+        <div class="menu-grid">
+            
+            <!-- كران -->
+            <div class="menu-card" data-category="karan">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=400&q=80');">
+                    <div class="menu-img-title">كران وجدي أصيل</div>
+                </div>
+                <div class="menu-info">
+                    <h3>كران بالكمون والحرور</h3>
+                    <p>محضر من أجود أنواع الحمص ومطهو ببطء في الفران ليقدم لكم ساخناً وطرياً بالكمون والهروس اللذيذ.</p>
+                    <span class="price">3 دراهم</span>
+                </div>
+            </div>
+
+            <!-- بودان -->
+            <div class="menu-card" data-category="karan">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80');">
+                    <div class="menu-img-title">بودان تقليدي</div>
+                </div>
+                <div class="menu-info">
+                    <h3>بودان تقليدي فاخر</h3>
+                    <p>بودان غني بالتوابل التقليدية والبصل، محضر بعناية فائقة لضمان نكهة مميزة وفريدة كتحمق.</p>
+                    <span class="price">5 دراهم</span>
+                </div>
+            </div>
+
+            <!-- سندويش معقودة عادي -->
+            <div class="menu-card" data-category="sandwich">
+                <div class="menu-img" style="background-image: url('https://ma3lama.com/wp-content/uploads/2022/11/65ed71bcd0b8a.jpg');">
+                    <div class="menu-img-title">سندويش معقودة كلاسيك</div>
+                </div>
+                <div class="menu-info">
+                    <h3>سندويش معقودة عادية</h3>
+                    <p>البطاطس المتبلة والمقلية المقرمشة، تقدم داخل خبز طازج مع صلصة الطماطم والهريسة حسب ذوقكم.</p>
+                    <span class="price">5 دراهم</span>
+                </div>
+            </div>
+
+            <!-- سندويش معقودة بالبيض -->
+            <div class="menu-card" data-category="sandwich">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=400&q=80');">
+                    <div class="menu-img-title">سندويش معقودة بالبيض</div>
+                </div>
+                <div class="menu-info">
+                    <h3>سندويش معقودة بالبيض</h3>
+                    <p>المعقودة الذهبية المقرمشة مضاف إليها البيض المسلوق لتشكل وجبة غنية ومشبعة ولذيذة جداً.</p>
+                    <span class="price">7 دراهم</span>
+                </div>
+            </div>
+
+            <!-- سندويش بودان -->
+            <div class="menu-card" data-category="sandwich">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=400&q=80');">
+                    <div class="menu-img-title">سندويش بودان</div>
+                </div>
+                <div class="menu-info">
+                    <h3>سندويش بودان دافئ</h3>
+                    <p>قطع البودان التقليدي المتبل واللذيذ وسط خبز طازج مع لمستكم المفضلة من الصلصات والكمون.</p>
+                    <span class="price">8 دراهم</span>
+                </div>
+            </div>
+
+            <!-- سندويش ميكست -->
+            <div class="menu-card" data-category="sandwich">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80');">
+                    <div class="menu-img-title">سندويش ميكست</div>
+                </div>
+                <div class="menu-info">
+                    <h3>سندويش ميكست (Mixte)</h3>
+                    <p>المزيج الأسطوري الذي يجمع بين قرمشة المعقودة ولذة البودان التقليدي في سندويش واحد مميز.</p>
+                    <span class="price">10 دراهم</span>
+                </div>
+            </div>
+
+            <!-- بريدة -->
+            <div class="menu-card" data-category="drinks">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80');">
+                    <div class="menu-img-title">بريدة المنعشة</div>
+                </div>
+                <div class="menu-info">
+                    <h3>مشروب بريدة (Barida)</h3>
+                    <p>المشروب التقليدي المنعش والمثالي لمرافقة كران والمعقودة ليضفي متعة كاملة على وجبتكم.</p>
+                    <span class="price">3 دراهم</span>
+                </div>
+            </div>
+
+            <!-- الوندا كانيط -->
+            <div class="menu-card" data-category="drinks">
+                <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=400&q=80');">
+                    <div class="menu-img-title">الوندا كانيط</div>
+                </div>
+                <div class="menu-info">
+                    <h3>الموندا كانيط (Oulmès / Soda)</h3>
+                    <p>مشروب غازي بارد ومنعش يتماشى بشكل رائع مع جميع أنواع السندويشات الساخنة.</p>
+                    <span class="price">6 دراهم</span>
+                </div>
+            </div>
+
+            <!-- الماء -->
+<div class="menu-card" data-category="drinks">
+    <div class="menu-img" style="background-color: #e3f2fd; display: flex; justify-content: center; align-items: center;">
+        <i class="fa-solid fa-bottle-water" style="font-size: 5rem; color: #29b6f6;"></i>
+    </div>
+    <div class="menu-info">
+        <h3>ماء معدني نقي</h3>
+        <p>زجاجة ماء معدني نقي ومبرد بشكل ممتاز، ضروري وصحي لمرافقة وجبتك المفضلة.</p>
+        <span class="price">3 دراهم</span>
+    </div>
+</div>
+                </div>
+                <div class="menu-info">
+                    <h3>ماء معدني بارد</h3>
+                    <p>زجاجة ماء معدني نقي ومبرد بشكل ممتاز، ضروري وصحي لمرافقة وجبتك المفضلة.</p>
+                    <span class="price">3 دراهم</span>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- معلومات الاتصال والمواقف الرسمية -->
+    <section class="contact-info">
+        <h2 class="section-title">مواعيد وأماكن التواجد</h2>
+        <p class="address-text"><i class="fa-solid fa-location-dot" style="color: var(--accent-color);"></i> الموقع: العروي، حي القدس</p>
+        
+        <div class="location-container">
+            <!-- موقع 1 -->
+            <div class="location-card">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h4>أيام الدراسة والتحصيل</h4>
+                <p><strong>أمام باب الجامعة</strong><br>من الساعة 12:00 ظهراً حتى 17:00 مساءً</p>
+            </div>
+            
+            <!-- موقع 2 -->
+            <div class="location-card">
+                <i class="fa-solid fa-prescription-bottle-medical"></i>
+                <h4>طيلة أيام السنة</h4>
+                <p><strong>أمام صيدلية ابن زهر</strong><br>من الساعة 18:00 مساءً حتى 1:00 ليلاً<br><small style="color: var(--accent-color); font-weight: bold;">(باستثناء يوم الأحد)</small></p>
+            </div>
+        </div>
+
+        <p style="font-size: 1.2rem; margin-top: 30px; color: #555;">يسعدنا تلبية طلباتكم عبر الاتصال المباشر:</p>
+        <a href="tel:0661985075" class="phone-num">
+            <i class="fa-solid fa-square-phone"></i> 0661985075
+        </a>
+        
+        <p class="welcome-msg">أهلاً وسهلاً بالجميع، نسعى دائماً لتقديم الأفضل لزبائننا الكرام.</p>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>&copy; 2026 جميع الحقوق محفوظة لسناك البنة الأصيلة - العروي.</p>
+    </footer>
+
+    <!-- كود الجافاسكريبت لفلترة الأكل بشكل تفاعلي سريع -->
+    <script>
+        function filterMenu(category) {
+            // تغيير حالة الأزرار النشطة
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // إخفاء أو إظهار الوجبات
+            const cards = document.querySelectorAll('.menu-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
