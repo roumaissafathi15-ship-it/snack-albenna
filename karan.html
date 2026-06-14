@@ -206,19 +206,8 @@
             color: #7f8c8d;
             font-size: 1rem;
             line-height: 1.6;
-            margin-bottom: 25px;
+            margin-bottom: 10px;
             height: 70px;
-        }
-
-        .price {
-            font-size: 1.4rem;
-            color: var(--accent-color);
-            font-weight: bold;
-            background-color: #fdf2f2;
-            padding: 6px 20px;
-            border-radius: 50px;
-            display: inline-block;
-            border: 1px dashed var(--accent-color);
         }
 
         /* قسم معلومات الاتصال والموقع المطور */
@@ -273,6 +262,23 @@
             color: #555;
         }
 
+        /* حاوية الخريطة مع العلامة المخصصة للسناك */
+        .map-container {
+            max-width: 900px;
+            margin: 30px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 3px solid var(--primary-color);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 420px;
+            border: 0;
+            display: block;
+        }
+
         .phone-num {
             font-size: 2.4rem;
             color: var(--accent-color);
@@ -318,7 +324,7 @@
     <section class="hero">
         <h2>اكتشف طعم الأصالة</h2>
         <p>نقدم لكم أجود المأكولات الشعبية المحضرة بعناية فائقة ونظافة تامة لتنال رضاكم.</p>
-        <a href="tel:0661985075" class="btn-call">
+        <a href="tel:0606394111" class="btn-call">
             <i class="fa-solid fa-phone-flip"></i> اتصل واطلب الآن
         </a>
     </section>
@@ -330,10 +336,10 @@
         
         <!-- أزرار الفلترة الذكية -->
         <div class="filter-container">
-            <button class="filter-btn active" onclick="filterMenu('all')">الكل</button>
-            <button class="filter-btn" onclick="filterMenu('karan')">كران وبودان</button>
-            <button class="filter-btn" onclick="filterMenu('sandwich')">السندويشات</button>
-            <button class="filter-btn" onclick="filterMenu('drinks')">المشروبات</button>
+            <button class="filter-btn active" onclick="filterMenu('all', this)">الكل</button>
+            <button class="filter-btn" onclick="filterMenu('karan', this)">كران وبودان</button>
+            <button class="filter-btn" onclick="filterMenu('sandwich', this)">السندويشات</button>
+            <button class="filter-btn" onclick="filterMenu('drinks', this)">المشروبات</button>
         </div>
         
         <div class="menu-grid">
@@ -346,7 +352,6 @@
                 <div class="menu-info">
                     <h3>كران بالكمون والحرور</h3>
                     <p>محضر من أجود أنواع الحمص ومطهو ببطء في الفران ليقدم لكم ساخناً وطرياً بالكمون والهروس اللذيذ.</p>
-                    <span class="price">3 دراهم</span>
                 </div>
             </div>
 
@@ -358,7 +363,6 @@
                 <div class="menu-info">
                     <h3>بودان تقليدي فاخر</h3>
                     <p>بودان غني بالتوابل التقليدية والبصل، محضر بعناية فائقة لضمان نكهة مميزة وفريدة كتحمق.</p>
-                    <span class="price">5 دراهم</span>
                 </div>
             </div>
 
@@ -370,7 +374,6 @@
                 <div class="menu-info">
                     <h3>سندويش معقودة عادية</h3>
                     <p>البطاطس المتبلة والمقلية المقرمشة، تقدم داخل خبز طازج مع صلصة الطماطم والهريسة حسب ذوقكم.</p>
-                    <span class="price">5 دراهم</span>
                 </div>
             </div>
 
@@ -381,8 +384,7 @@
                 </div>
                 <div class="menu-info">
                     <h3>سندويش معقودة بالبيض</h3>
-                    <p>المعقودة الذهبية المقرمشة مضاف إليها البيض المسلوق لتشكل وجبة غنية ومشبعة ولذيذة جداً.</p>
-                    <span class="price">7 دراهم</span>
+                    <p>المعقودة الذهبية المقرمشة مضاف إليها البيض المسلوق لتشكل وجبة غنية ومشبعة ولذيثة جداً.</p>
                 </div>
             </div>
 
@@ -394,7 +396,6 @@
                 <div class="menu-info">
                     <h3>سندويش بودان دافئ</h3>
                     <p>قطع البودان التقليدي المتبل واللذيذ وسط خبز طازج مع لمستكم المفضلة من الصلصات والكمون.</p>
-                    <span class="price">8 دراهم</span>
                 </div>
             </div>
 
@@ -406,7 +407,6 @@
                 <div class="menu-info">
                     <h3>سندويش ميكست (Mixte)</h3>
                     <p>المزيج الأسطوري الذي يجمع بين قرمشة المعقودة ولذة البودان التقليدي في سندويش واحد مميز.</p>
-                    <span class="price">10 دراهم</span>
                 </div>
             </div>
 
@@ -418,38 +418,29 @@
                 <div class="menu-info">
                     <h3>مشروب بريدة (Barida)</h3>
                     <p>المشروب التقليدي المنعش والمثالي لمرافقة كران والمعقودة ليضفي متعة كاملة على وجبتكم.</p>
-                    <span class="price">3 دراهم</span>
                 </div>
             </div>
 
             <!-- الوندا كانيط -->
             <div class="menu-card" data-category="drinks">
                 <div class="menu-img" style="background-image: url('https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=400&q=80');">
-                    <div class="menu-img-title">الوندا كانيط</div>
+                    <div class="menu-img-title">الموندا كانيط</div>
                 </div>
                 <div class="menu-info">
                     <h3>الموندا كانيط (Oulmès / Soda)</h3>
                     <p>مشروب غازي بارد ومنعش يتماشى بشكل رائع مع جميع أنواع السندويشات الساخنة.</p>
-                    <span class="price">6 دراهم</span>
                 </div>
             </div>
 
-            <!-- الماء -->
-<div class="menu-card" data-category="drinks">
-    <div class="menu-img" style="background-color: #e3f2fd; display: flex; justify-content: center; align-items: center;">
-        <i class="fa-solid fa-bottle-water" style="font-size: 5rem; color: #29b6f6;"></i>
-    </div>
-    <div class="menu-info">
-        <h3>ماء معدني نقي</h3>
-        <p>زجاجة ماء معدني نقي ومبرد بشكل ممتاز، ضروري وصحي لمرافقة وجبتك المفضلة.</p>
-        <span class="price">3 دراهم</span>
-    </div>
-</div>
+            <!-- الماء المعدني البارد -->
+            <div class="menu-card" data-category="drinks">
+                <div class="menu-img" style="background-color: #e3f2fd; display: flex; justify-content: center; align-items: center;">
+                    <i class="fa-solid fa-bottle-water" style="font-size: 5rem; color: #29b6f6;"></i>
+                    <div class="menu-img-title" style="background: linear-gradient(transparent, rgba(0,0,0,0.5));">ماء معدني نقي</div>
                 </div>
                 <div class="menu-info">
                     <h3>ماء معدني بارد</h3>
                     <p>زجاجة ماء معدني نقي ومبرد بشكل ممتاز، ضروري وصحي لمرافقة وجبتك المفضلة.</p>
-                    <span class="price">3 دراهم</span>
                 </div>
             </div>
 
@@ -458,31 +449,41 @@
 
     <!-- معلومات الاتصال والمواقف الرسمية -->
     <section class="contact-info">
-        <h2 class="section-title">مواعيد وأماكن التواجد</h2>
-        <p class="address-text"><i class="fa-solid fa-location-dot" style="color: var(--accent-color);"></i> الموقع: العروي، حي القدس</p>
+        <h2 class="section-title">مواعيد وأماكن التواجد بالعروي</h2>
+        <p class="address-text"><i class="fa-solid fa-location-dot" style="color: var(--accent-color);"></i> الموقع المباشر بـ GPS: صيدلية ابن زهر، العروي</p>
         
         <div class="location-container">
             <!-- موقع 1 -->
             <div class="location-card">
                 <i class="fa-solid fa-graduation-cap"></i>
                 <h4>أيام الدراسة والتحصيل</h4>
-                <p><strong>أمام باب الجامعة</strong><br>من الساعة 12:00 ظهراً حتى 17:00 مساءً</p>
+                <p><strong>بجوار الكلية المتعددة التخصصات بالعروي</strong><br>من الساعة 12:00 ظهراً حتى 17:00 مساءً</p>
             </div>
             
             <!-- موقع 2 -->
             <div class="location-card">
                 <i class="fa-solid fa-prescription-bottle-medical"></i>
-                <h4>طيلة أيام السنة</h4>
-                <p><strong>أمام صيدلية ابن زهر</strong><br>من الساعة 18:00 مساءً حتى 1:00 ليلاً<br><small style="color: var(--accent-color); font-weight: bold;">(باستثناء يوم الأحد)</small></p>
+                <h4>طيلة أيام السنة (الفترة المسائية)</h4>
+                <p><strong>أمام صيدلية ابن زهر (شارع الحسن الثاني)</strong><br>من الساعة 18:00 مساءً حتى 1:00 ليلاً<br><small style="color: var(--accent-color); font-weight: bold;">(باستثناء يوم الأحد)</small></p>
             </div>
         </div>
 
+        <!-- خريطة تفاعلية حية تضع علامة (Marker) واضحة باسم السناك للزبائن -->
+        <div class="map-container">
+            <iframe 
+                src="https://maps.google.com/maps?q=Pharmacie%20Ibn%20Zohr,%20Al%20Aroui+(سناك%20البنة%20الأصيلة)&t=&z=16&ie=UTF8&iwloc=B&output=embed" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
         <p style="font-size: 1.2rem; margin-top: 30px; color: #555;">يسعدنا تلبية طلباتكم عبر الاتصال المباشر:</p>
-        <a href="tel:0661985075" class="phone-num">
-            <i class="fa-solid fa-square-phone"></i> 0661985075
+        <a href="tel:0606394111" class="phone-num">
+            <i class="fa-solid fa-phone-volume"></i> 0606394111
         </a>
         
-        <p class="welcome-msg">أهلاً وسهلاً بالجميع، نسعى دائماً لتقديم الأفضل لزبائننا الكرام.</p>
+        <p class="welcome-msg">أهلاً وسهلاً بالجميع، نسعى دائماً لتقديم الأفضل لزبائننا الكرام في مدينة العروي.</p>
     </section>
 
     <!-- الفوتر -->
@@ -492,11 +493,11 @@
 
     <!-- كود الجافاسكريبت لفلترة الأكل بشكل تفاعلي سريع -->
     <script>
-        function filterMenu(category) {
+        function filterMenu(category, element) {
             // تغيير حالة الأزرار النشطة
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            element.classList.add('active');
 
             // إخفاء أو إظهار الوجبات
             const cards = document.querySelectorAll('.menu-card');
